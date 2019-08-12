@@ -40,8 +40,8 @@ class SortDialog : FileManageDialog(), RadioGroup.OnCheckedChangeListener {
     }
 
     override fun init(savedInstanceState: Bundle?) {
-        sortCheckedID = arguments.getInt("sortCheckedID", R.id.sort_by_default)
-        sequenceCheckedId = arguments.getInt("sequenceCheckedId", R.id.sequence_asc)
+        sortCheckedID = arguments!!.getInt("sortCheckedID", R.id.sort_by_default)
+        sequenceCheckedId = arguments!!.getInt("sequenceCheckedId", R.id.sequence_asc)
         check()
         when (sortCheckedID) {
             R.id.sort_by_default -> sort_by_default.isChecked = true

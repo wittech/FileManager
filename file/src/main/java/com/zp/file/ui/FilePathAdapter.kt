@@ -36,13 +36,13 @@ class FilePathAdapter (private var context: Context) : RecyclerView.Adapter<File
         notifyItemRemoved(list.size)
     }
 
-    override fun onBindViewHolder(holder: FileViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: FileViewHolder, position: Int) {
         holder?.apply {
             setTextView(R.id.item_file_path_title, getItem(position).fileName)
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): FileViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FileViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_file_path, parent, false)
         return FileViewHolder(view)
     }

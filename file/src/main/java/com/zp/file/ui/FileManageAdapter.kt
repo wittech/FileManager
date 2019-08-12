@@ -105,7 +105,7 @@ class FileManageAdapter(private var context: Context) : RecyclerView.Adapter<Fil
         return if (item.isFile) 0 else 1
     }
 
-    override fun onBindViewHolder(holder: FileViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: FileViewHolder, position: Int) {
         val item = getItem(position)
         holder?.apply {
             if (item.isFile) { // 文件
@@ -189,7 +189,7 @@ class FileManageAdapter(private var context: Context) : RecyclerView.Adapter<Fil
 
     fun getSelectData() = selectedData
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): FileViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FileViewHolder {
         val view = when (viewType) {
             0 -> LayoutInflater.from(context).inflate(R.layout.item_files, parent, false)
             1 -> LayoutInflater.from(context).inflate(R.layout.item_file, parent, false)

@@ -10,7 +10,7 @@ import android.view.ViewGroup
 
 abstract class FileManageDialog : DialogFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val layoutID = getContentView()
         if (layoutID <= 0) throw NullPointerException("DialogFragment ContentView is not null")
         return inflater?.inflate(getContentView(), container, false)
@@ -18,7 +18,7 @@ abstract class FileManageDialog : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?) = createDialog(savedInstanceState)
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         init(savedInstanceState)
         dialog.setOnKeyListener { _, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN)

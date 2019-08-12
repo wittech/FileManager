@@ -76,7 +76,7 @@ class AudioPlayDialog : FileManageDialog(), SeekBar.OnSeekBarChangeListener, Run
             }
         }
         dialog_audio_bar.setOnSeekBarChangeListener(this)
-        dialog_audio_name.text = arguments.getString("filePath").let {
+        dialog_audio_name.text = arguments!!.getString("filePath").let {
             it.substring(it.lastIndexOf("/") + 1, it.length)
         }
     }
@@ -88,7 +88,7 @@ class AudioPlayDialog : FileManageDialog(), SeekBar.OnSeekBarChangeListener, Run
 
     private fun initPlayer() {
         mediaPlayer = MediaPlayer()
-        mediaPlayer?.setDataSource(arguments.getString("filePath"))
+        mediaPlayer?.setDataSource(arguments!!.getString("filePath"))
         mediaPlayer?.prepareAsync()
         mediaPlayer?.setOnPreparedListener { play ->
             dialog_audio_bar.max = play.duration

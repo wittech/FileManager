@@ -37,7 +37,7 @@ class InfoDialog : FileManageDialog(), Runnable {
     }
 
     override fun init(savedInstanceState: Bundle?) {
-        val bean = arguments.getSerializable("fileBean") as FileBean
+        val bean = arguments!!.getSerializable("fileBean") as FileBean
         filePath = bean.filePath
         fileType = FileTypeManage.getInstance().getFileType(bean.filePath)
         handler = InfoHandler(this)

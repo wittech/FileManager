@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Point
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.os.Parcelable
@@ -136,14 +137,16 @@ fun Activity.setStatusBarTransparent() {
     val decorView = window.decorView
     val option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
     decorView.systemUiVisibility = option
-    window.statusBarColor = Color.TRANSPARENT
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        window.statusBarColor = Color.TRANSPARENT
+    }
 }
 
 fun Context.getColorById(colorID: Int) = ContextCompat.getColor(this, colorID)
 fun Context.getStringById(stringID: Int) = resources.getString(stringID)
 /** 为DialogFragment设置需要的宽高 */
 fun FileManageDialog.setNeedWH() {
-    val width = context.getDisplay()[0] * 0.88f
+    val width = context!!.getDisplay()[0] * 0.88f
     dialog.window.setLayout(width.toInt(), ViewGroup.LayoutParams.WRAP_CONTENT)
 }
 

@@ -35,11 +35,11 @@ class FolderDialog : FileManageDialog() {
 
     override fun getContentView() = R.layout.dialog_folder_layout
 
-    override fun createDialog(savedInstanceState: Bundle?) = BottomSheetDialog(context)
+    override fun createDialog(savedInstanceState: Bundle?) = BottomSheetDialog(context!!)
 
     override fun init(savedInstanceState: Bundle?) {
-        folderAdapter = FolderAdapter(context)
-        filePathAdapter = FilePathAdapter(context)
+        folderAdapter = FolderAdapter(context!!)
+        filePathAdapter = FilePathAdapter(context!!)
         folderAdapter?.setItemClickListener { bean, _ -> if (!bean.isFile) openFile(bean) }
         initRecyclerView()
         RefreshUtil.setRecyclerViewLine(dialog_folder_recyclerView, RecycleViewDivider.HORIZONTAL, true)
@@ -47,8 +47,8 @@ class FolderDialog : FileManageDialog() {
         dialog_folder_cancel.setOnClickListener { dismiss() }
         dialog_folder_down.setOnClickListener {
             telActivityListener?.telActivity(
-                    arguments.getString("filePath"), getThisFilePath(),
-                    arguments.getInt("type", COPY_TYPE))
+                    arguments!!.getString("filePath"), getThisFilePath(),
+                    arguments!!.getInt("type", COPY_TYPE))
             dismiss()
         }
     }
@@ -100,7 +100,7 @@ class FolderDialog : FileManageDialog() {
     private fun getThisFilePath() = if (backList.isEmpty()) null else backList[backList.size - 1]
 
     private fun setDialogWH() {
-        val display = context.getDisplay()
+        val display = context!!.getDisplay()
         dialog.window.setLayout(display[0], display[1])
         dialog_sort_rootView.layoutParams =
                 FrameLayout.LayoutParams(display[0], display[1])

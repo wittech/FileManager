@@ -35,7 +35,7 @@ class FolderAdapter(private var context: Context) : RecyclerView.Adapter<FileVie
         return if (item.isFile) 0 else 1
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): FileViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FileViewHolder {
         val view = when (viewType) {
             0 -> LayoutInflater.from(context).inflate(R.layout.item_files, parent, false)
             1 -> LayoutInflater.from(context).inflate(R.layout.item_file, parent, false)
@@ -44,7 +44,7 @@ class FolderAdapter(private var context: Context) : RecyclerView.Adapter<FileVie
         return FileViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: FileViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: FileViewHolder, position: Int) {
         val item = getItem(position)
         holder?.apply {
             if (item.isFile) { // 文件
